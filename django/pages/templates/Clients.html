@@ -1,0 +1,242 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <title>Clients   </title>
+    <meta charset="UTF-8">
+
+<style type="text/css">
+
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+<div class="split right">
+
+<h1> Client Table</h1><br>
+    
+   
+   {% for n in email%}
+
+ <h1>{{n}}</h1>
+
+{% endfor %}
+
+<br><p>
+
+<form method="post" action="/Clients/" enctype="multipart/form-data" > {%  csrf_token %}
+
+   <tr>
+    <td> <input type="submit"    value="Refresh Table"/></td>
+  </tr>
+  </form>
+  
+</div>
+
+<div class="split left">
+
+
+<nav>
+<ul>
+<li><a href="/Projects/">Go To Projects</a></li>
+</ul>
+</nav>
+<br>
+  
+    <h2>Add New Client</h2><br>
+    
+     <form id="addClient" > {%  csrf_token %}
+
+   <tr>
+    <td> Client Name    :<input type="text"  id="clientName"   /></td> <br>
+    <td> Contact Person :<input type="text" id="contactPerson" /></td><br>
+     <td> Contact Number:<input type="text" id="contactNumber" /></td>
+     
+    
+    <td> <input type="submit"    value="add Client"/></td>
+
+     
+</tr>
+
+</form>
+
+  <br><br><h2>Edit Client</h2><br>
+
+  
+  <p> <form id="editClient" > {%  csrf_token %}
+
+   <tr>
+    <td> Client Name    :<input type="text" id="clientNames"   /></td> <br>
+    <td> New Contact Person :<input type="text" id="contactPersons" /></td><br>
+     <td> New Contact Number:<input type="text" id="contactNumbers" /></td>
+     
+    
+    <td> <input type="submit"    value="Update Client"/></td>
+
+     
+</tr>
+
+</form
+
+<br><br><h2>Delete Client</h2><br>
+
+  
+  <p> <form id="deleteClient" > {%  csrf_token %}
+
+   <tr>
+       <td> Client Name    :<input type="text" id="deleteClientName"   /></td>
+       <td> <input type="submit"    value="Delete Client"/></td>  
+   </tr>
+
+</form>
+
+
+  </div>
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+ 
+
+
+
+     $(document).on('submit','#addClient', function(e){
+
+
+           e.preventDefault();
+
+           $.ajax({
+
+              type: 'POST',
+              url:'/addClient/',
+              data:{
+                clientName: $('#clientName').val(),
+                contactPerson:$('#contactPerson').val(),
+                 contactNumber :$('#contactNumber').val(),
+                
+                
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+              
+              },
+              
+              sucess: function(){
+              alert(" information sent");
+              }
+        });
+    });
+
+</script>
+
+
+<script type="text/javascript">
+
+ 
+
+
+
+     $(document).on('submit','#editClient', function(e){
+
+
+           e.preventDefault();
+
+           $.ajax({
+
+              type: 'POST',
+              url:'/editClient/',
+              data:{
+                clientName: $('#clientNames').val(),
+                contactPerson:$('#contactPersons').val(),
+                 contactNumber :$('#contactNumbers').val(),
+                
+                
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+              
+              },
+              
+              sucess: function(){
+              alert(" information sent");
+              }
+        });
+    });
+
+</script>
+<script type="text/javascript">
+
+ 
+
+
+
+     $(document).on('submit','#deleteClient', function(e){
+
+
+           e.preventDefault();
+
+           $.ajax({
+
+              type: 'POST',
+              url:'/deleteClient/',
+              data:{
+                clientName: $('#deleteClientName').val(),
+              
+                
+                
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+              
+              },
+              
+              sucess: function(){
+              alert(" information sent");
+              }
+        });
+    });
+
+</script>
+
+
+
+</html>
+

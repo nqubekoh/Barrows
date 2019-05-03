@@ -1,0 +1,51 @@
+<!-- templates/home.html -->
+
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <title>Home  </title>
+    <meta charset="UTF-8">
+   
+    
+    
+
+</head>
+
+<body>
+
+
+<div  id="top">
+    <div id="centerText">
+        <h2  class="text-align: center">Home</h2>
+    </div>
+
+</div>
+
+<div id="left">
+
+    <h2>Login Here</h2>
+
+
+ <form method="post" action="/signIn/" enctype="multipart/form-data" > {%  csrf_token %}
+
+   <tr>
+    <td> Username<input type="text"  name="username" placeholder="username" > </td>
+    <td> Password<input type="password" name="password" placeholder="password" ></td>
+    <td> <input type="submit"    value="login"/></td>
+
+     
+</tr>
+
+</form>
+
+ 
+</div>
+
+
+
+</body>
+
+
+</html>

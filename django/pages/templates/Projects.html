@@ -1,0 +1,252 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+
+    <title>Projects   </title>
+    <meta charset="UTF-8">
+
+<style type="text/css">
+
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="split right">
+
+<h1> Project Table</h1><br>
+    
+   
+   {% for n in email%}
+
+ <h1>{{n}}</h1>
+
+{% endfor %}
+<br><p>
+
+<form method="post" action="/Projects/" enctype="multipart/form-data" > {%  csrf_token %}
+
+   <tr>
+    <td> <input type="submit"    value="Refresh Table"/></td>
+  </tr>
+  </form>
+  
+</div>
+
+<div class="split left">
+
+<nav>
+<ul>
+<li><a href="/Clients/">Go To Clients</a></li>
+
+</ul>
+</nav>
+<br>
+  
+    <h2>Add New Project</h2><br>
+    
+     <form  id="addProject"  > {%  csrf_token %}
+
+   <tr>
+    <td> Project Name<input type="text"  id="projectName"  /></td> <br>
+    <td> Client Name<input type="text" id="clientName" /></td><br>
+       <td>Project Status<select id="status">
+  <option value="Active">Active</option>
+  <option value="Inactive">Inactive</option>
+  <option value="Complete">Complete</option>
+
+</select></td>
+    
+    <td> <input type="submit"    value="Add Project"/></td>
+
+     
+</tr>
+
+</form>
+
+
+<br><br><h2>Edit Project</h2><br>
+
+  
+  <p> <form id="editProject" > {%  csrf_token %}
+
+     <tr>
+    <td>Project Name<input type="text"  id="projectNames"  /></td> <br>
+    <td>New Client Name<input type="text" id="clientNames" /></td><br>
+       <td>New Project Status<select id="statuss">
+  <option value="Active">Active</option>
+  <option value="Inactive">Inactive</option>
+  <option value="Complete">Complete</option>
+
+</select></td>
+    
+    <td> <input type="submit"    value="Edit Project"/></td>
+
+     
+</tr>
+
+</form>
+
+<br><br><h2>Delete Project</h2><br>
+
+  
+  <p> <form id="deleteProject" > {%  csrf_token %}
+
+   <tr>
+    <td> Project Name    :<input type="text" id="deleteProjectName"   /></td>
+    <td> <input type="submit"    value="Delete Project"/></td>
+
+     
+</tr>
+
+</form>
+  </div>
+
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+ 
+
+
+
+     $(document).on('submit','#addProject', function(e){
+
+
+           e.preventDefault();
+
+           $.ajax({
+
+              type: 'POST',
+              url:'/addProject/',
+              data:{
+                projectName: $('#projectName').val(),
+               clientName :$('#clientName').val(),
+                 status :$('#status').val(),
+                
+                
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+              
+              },
+              
+              sucess: function(){
+              alert(" information sent");
+              }
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+
+ 
+
+
+
+     $(document).on('submit','#editProject', function(e){
+
+
+           e.preventDefault();
+
+           $.ajax({
+
+              type: 'POST',
+              url:'/editProject/',
+              data:{
+                projectName: $('#projectNames').val(),
+               clientName :$('#clientNames').val(),
+                 status :$('#statuss').val(),
+                
+                
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+              
+              },
+              
+              sucess: function(){
+              alert(" information sent");
+              }
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+
+ 
+
+
+
+     $(document).on('submit','#deleteProject', function(e){
+
+
+           e.preventDefault();
+
+           $.ajax({
+
+              type: 'POST',
+              url:'/deleteProject/',
+              data:{
+                projectName: $('#deleteProjectName').val(),
+              
+                
+                
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+              
+              },
+              
+              sucess: function(){
+              alert(" information sent");
+              }
+        });
+    });
+
+</script>
+
+
+
+
+
+</html>
+
