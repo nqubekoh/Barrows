@@ -6,7 +6,7 @@ To run this project ,first download the project "clone or download" button
 
 download and install python if you haven't ,use from this link "https://www.python.org/ftp/python/3.7.3/python-3.7.3.exe"
 
-open cmd, change directory to the folder named "django"
+open cmd, change directory to the folder named "Barrows.N.Mathenjwa/django"
 
 then run this command "python manage.py runserver"
 
