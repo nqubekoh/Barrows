@@ -6,7 +6,7 @@ To run this project ,first download the project "clone or download" button
 
 download and install python if you haven't ,use from this link "https://www.python.org/ftp/python/3.7.3/python-3.7.3.exe"
 
-nopte: select add pip and add python to environment variables
+note: when installing python ,dont forget to select boxes that says "add pip" and "add python to environment variables"
 
 restart the pc after installing python
 
