@@ -2,7 +2,7 @@
 CRM for a company client's proijects
 
 
-To run this project ,first download it
+To run this project ,first download the project "clone or download" button
 
 download and install python if you haven't ,use from this link "https://www.python.org/ftp/python/3.7.3/python-3.7.3.exe"
 
