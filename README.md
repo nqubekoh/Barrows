@@ -8,6 +8,8 @@ download and install python if you haven't ,use from this link "https://www.pyth
 
 note: when installing python ,dont forget to select boxes that says "add pip" and "add python to environment variables"
 
+make sure you install python 64 bit, or if you decide to install 32bit you must then install django 32 bit
+
 restart the pc after installing python
 
 open cmd, change directory to the folder named "Barrows/django"
