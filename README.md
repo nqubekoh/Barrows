@@ -10,6 +10,10 @@ note: when installing python ,dont forget to select boxes that says "add pip" an
 
 make sure you install python 64 bit, or if you decide to install 32bit you must then install django 32 bit
 
+to install django using cmd 
+open cmd, change directory to the folder named "Barrows/django"
+write command "pip install django==2.2.0"
+
 restart the pc after installing python
 
 open cmd, change directory to the folder named "Barrows/django"
